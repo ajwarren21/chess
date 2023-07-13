@@ -14,11 +14,11 @@ public abstract class Piece {
 	private int playerNumber;
 	private Square position;
 	
-	public Piece(int playerNumber) {
+	public Piece(int playerNumber, int verticle, String horizontal) {
 		this.playerNumber = playerNumber;
 		setColor();
 		alive = true;
-		setSquare();
+		setSquare(verticle, horizontal);
 	}
 	
 	
@@ -32,10 +32,11 @@ public abstract class Piece {
 	}
 	
 	private void setSquare(int verticle, String horizontal) {
-		Square = new Square(verticle, horizontal);
+		Square square = new Square(color, horizontal, verticle);
+		position = square;
 	}
 	
-	private void die() {
+	public void die() {
 		alive = false;
 	}
 	
@@ -45,5 +46,13 @@ public abstract class Piece {
 	
 	public int getPlayerNumber() {
 		return playerNumber;
+	}
+	
+	public Square getPosition() {
+		return position;
+	}
+	
+	public boolean getAlive() {
+		return alive;
 	}
 }
